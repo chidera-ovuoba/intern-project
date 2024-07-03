@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Product;
+use App\Models\Products;
 class ProductsSeeder extends Seeder
 {
     /**
@@ -20,7 +20,7 @@ class ProductsSeeder extends Seeder
         ];
 
         foreach ($products as $product) {
-            Product::create($product);
+            Products::create($product);
         }
     }
 }
