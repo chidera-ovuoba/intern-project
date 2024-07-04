@@ -1,0 +1,15 @@
+curl -X POST http://your-laravel-app-url/api/orders \
+-H "Content-Type: application/json" \
+-d '{
+  "email": "customer@example.com",
+  "items": [
+    {
+      "product_id": 1,
+      "quantity": 2
+    },
+    {
+      "product_id": 2,
+      "quantity": 1
+    }
+  ]
+}'
