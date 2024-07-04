@@ -13,6 +13,7 @@ class OrderController extends Controller
   public function store(Request $request){
 
     //validating the request 
+    \Log::info('Request Data:', $request->all());
     $validator = Validator::make($request->all(),[
         'email' => 'required|email',
         'items' => 'required|array',
@@ -34,17 +35,16 @@ class OrderController extends Controller
         if($item['quantity'] > $product->stock){
             return response()->json(['error' => 'Insufficient stock for product ID '. $item['product_id']], 400);
         }
-        print_r(Products);
         $orderItem =OrderItem::create([
             'order_id'=>$order->id,
-            'product_id'=>item['product_id'],
-            'quantity' =>item['quantity'],
+            'product_id'=>$item['product_id'],
+            'quantity' =>$item['quantity'],
             'price' => $product->price
         ]);
 
         //updating the stock
         $product->stock -=$item['quantity'];
-        $product.save();
+        $product->save();
 
         $totalAmount += $orderItem->quantity * $orderItem->price;
     }

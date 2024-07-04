@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email,total'];
+    protected $fillable = ['email','total'];
 
     public function items(){
         return $this -> hasMany(OrderItem::class);
